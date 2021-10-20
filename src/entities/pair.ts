@@ -29,7 +29,10 @@ export class Pair {
 
   public static getAddress(tokenA: Token, tokenB: Token): string {
     console.log("Pair_getAddress");
+    console.log("Pair_getAddress");
     const tokens = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
+    console.log("Pair_getAddress_tokens__",tokens);
+    console.log("Pair_getAddress_PAIR_ADDRESS_CACHE_1",PAIR_ADDRESS_CACHE);
 
     if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
       PAIR_ADDRESS_CACHE = {
@@ -43,6 +46,9 @@ export class Pair {
           ),
         },
       }
+
+      console.log("Pair_getAddress_PAIR_ADDRESS_CACHE_2",PAIR_ADDRESS_CACHE);
+
     }
 
     return PAIR_ADDRESS_CACHE[tokens[0].address][tokens[1].address]
@@ -227,3 +233,5 @@ export class Pair {
     )
   }
 }
+
+
